@@ -1,0 +1,47 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<body>
+    <h3>Create New Listing</h3>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <form action="/listings" method="post">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Your Title</label>
+                    <input name="title" value="<%= listing.title %>" type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="Enter Title">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                    <textarea name="description" class="form-control" id="exampleFormControlTextarea1"
+                        rows="3"><%= listing.description %></textarea>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Image URL</label>
+                    <input name="image" value="<%= listing.image %>" class="form-control" type="file" id="formFile">
+                </div>
+                <div class="row">
+                <div class="mb-3 col-md-4">
+                    <label for="formGroupExampleInput" class="form-label">Price</label>
+                    <input name="price" type="text" value="<%= listing.price %>" class="form-control" id="formGroupExampleInput"
+                        placeholder="Enter Price">
+                </div>
+                <div class="mb-3 col-md-8">
+                    <label for="formGroupExampleInput" class="form-label">Country</label>
+                    <input name="country" value="<%= listing.country %>" type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="Enter Country">
+                </div>
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Location</label>
+                    <input name="location" value="<%= listing.location %>" type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="Enter Your Location">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
