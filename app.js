@@ -47,17 +47,20 @@ app.get("/listings/:id", async (req, res)=>{
 })
 
 //Create Route
-app.post("/listings", (req, res)=>{
-    const newListing = new Listing(req.body);
-    newListing.save();
-    res.redirect("/listings");
+app.post("/listings", (req, res, next)=>{
+    try {
+        const newListing = new Listing(req.body);
+        newListing.save();
+        res.redirect("/listings");
+    } catch (error) {
+        next(error)
+    }
 })
 
 //Edit Route
 app.get("/listings/:id/edit", async (req, res)=>{
     let { id } = req.params;
-    const listing = await Listing.findById(id);
-    console.log(listing)
+    const listing = await Listing.findById(id)
     res.render("listings/edit.ejs", { listing })
 })
 
@@ -66,7 +69,7 @@ app.put("/listings/:id", async (req, res)=>{
     let{title, description, image, price, location, country} = req.body;
     let { id } = req.params;
     await Listing.findByIdAndUpdate(id, {title: title, description: description, image: image, price: price, location: location, country: country });
-    res.redirect("/listings");
+    res.redirect(`/listings/${id}`);
 })
 
 //Delete Route
@@ -76,19 +79,9 @@ app.delete("/listings/:id", async (req, res)=>{
     res.redirect("/listings");
 });
 
-// app.get("/testListing", async (req, res)=>{
-//     let sampleListing = new Listing({
-//         title: "My New Villa",
-//         description: "By the Beach",
-//         price: 1200,
-//         location: "Calangute, Goa",
-//         Country: "India",
-//     })
-
-//     await sampleListing.save();
-//     console.log("Save succesfully");
-//     res.send("inserted")
-// })
+app.use((err, req, res, next)=>{
+    res.send("Something went wrong")
+})
 
 app.listen(8080, ()=>{
     console.log("server is listenting on port 8080")

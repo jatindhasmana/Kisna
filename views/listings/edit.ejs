@@ -1,41 +1,48 @@
 <% layout("layouts/boilerplate.ejs") %>
 
 <body>
-    <h3>Create New Listing</h3>
+    <h3>Edit Your Listing</h3>
     <div class="row">
         <div class="col-8 offset-2">
-            <form action="/listings" method="post">
+            <form action="/listings/<%= listing._id %>?_method=PUT" method="post" novalidate class="needs-validation">
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label">Your Title</label>
                     <input name="title" value="<%= listing.title %>" type="text" class="form-control" id="formGroupExampleInput"
-                        placeholder="Enter Title">
+                        placeholder="Enter Title" required>
+                        <div class="valid-feedback">Title looks good</div>
+                        <div class="invalid-feedback">Please enter valid title</div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
                     <textarea name="description" class="form-control" id="exampleFormControlTextarea1"
-                        rows="3"><%= listing.description %></textarea>
+                        rows="3" required><%= listing.description %></textarea>
+                        <div class="invalid-feedback">Please enter short description</div>
                 </div>
     
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Image URL</label>
-                    <input name="image" value="<%= listing.image %>" class="form-control" type="file" id="formFile">
+                    <input name="image" value="<%= listing.image %>" class="form-control" type="text" id="formFile" required>
+                    
                 </div>
                 <div class="row">
                 <div class="mb-3 col-md-4">
                     <label for="formGroupExampleInput" class="form-label">Price</label>
                     <input name="price" type="text" value="<%= listing.price %>" class="form-control" id="formGroupExampleInput"
-                        placeholder="Enter Price">
+                        placeholder="Enter Price" required>
+                        <div class="invalid-feedback">Price should be valid</div>
                 </div>
                 <div class="mb-3 col-md-8">
                     <label for="formGroupExampleInput" class="form-label">Country</label>
                     <input name="country" value="<%= listing.country %>" type="text" class="form-control" id="formGroupExampleInput"
-                        placeholder="Enter Country">
+                        placeholder="Enter Country" required>
+                        <div class="invalid-feedback">Country name should be valid</div>
                 </div>
                 </div>
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label">Location</label>
                     <input name="location" value="<%= listing.location %>" type="text" class="form-control" id="formGroupExampleInput"
-                        placeholder="Enter Your Location">
+                        placeholder="Enter Your Location" required>
+                        <div class="invalid-feedback">Location Should be valid valid</div>
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Submit</button>
