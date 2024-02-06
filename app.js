@@ -84,15 +84,12 @@ app.all("*", (req, res, next)=>{
     next(new ExpressError(404, "Page not Found!"))
 })
 
-// app.use((err, req, res, next)=>{
-//     let { statusCode=500,  message="something went wrong" } = err;
-//     err = (message.split(",")[0].split("Path")[1])
-//     // res.status(statusCode).render("error.ejs", { message: err})
-//     // res.status(statusCode).send(message)
-
-//     next()
-    
-// })
+app.use((err, req, res, next)=>{
+    let { statusCode=500,  message="something went wrong" } = err;
+    err = (message.split(",")[0].split("Path")[1])
+    res.status(statusCode).render("error.ejs", { message: err})
+    // res.status(statusCode).send(message)    
+})
 
 app.listen(8080, ()=>{
     console.log("server is listenting on port 8080")
