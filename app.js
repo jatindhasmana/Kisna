@@ -31,6 +31,16 @@ app.get("/", (req, res)=>{
     res.send("Hi, I am root");
 });
 
+const validateListing = (req, res, next)=>{
+    let { error } = listingSchema.validate(req.body)
+    if(error){
+        throw new ExpressError(400, error);
+    }
+    else{
+        next();
+    }
+}
+
 //Index Route
 app.get("/listings", wrapAsync(async (req, res)=>{
     const allListings = await Listing.find({});
@@ -51,13 +61,8 @@ app.get("/listings/:id", wrapAsync(async (req, res)=>{
 }));
 
 //Create Route
-app.post("/listings", wrapAsync(async (req, res)=>{
-    let result = listingSchema.validate(req.body)
-    console.log(result)
-    if(result.error){
-        throw new ExpressError(400, result.error)
-    }
-    console.log(req.body)
+app.post("/listings", validateListing, wrapAsync(async (req, res)=>{
+    
     const newListing = new Listing(req.body.listing);
     // console.log(req.body)
     await newListing.save();
@@ -73,8 +78,7 @@ app.get("/listings/:id/edit", wrapAsync(async (req, res)=>{
 }));
 
 //Update Route
-app.put("/listings/:id", wrapAsync(async (req, res)=>{
-    let{title, description, image, price, location, country} = req.body.listing;
+app.put("/listings/:id", validateListing, wrapAsync(async (req, res)=>{
     let { id } = req.params;
     await Listing.findByIdAndUpdate(id, {...req.body.listing});
     res.redirect(`/listings/${id}`);
@@ -93,9 +97,7 @@ app.all("*", (req, res, next)=>{
 
 app.use((err, req, res, next)=>{
     let { statusCode=500,  message="something went wrong" } = err;
-    // err = (message.split(",")[0].split("Path")[1])
-    res.status(statusCode).render("error.ejs", { err})
-    // res.status(statusCode).send(message)    
+    res.status(statusCode).render("error.ejs", { err })
 })
 
 app.listen(8080, ()=>{
