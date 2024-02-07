@@ -8,6 +8,7 @@ const MONGO_URL = 'mongodb://127.0.0.1:27017/wanderLust';
 const Listing = require("./models/listing.js");
 const wrapAsync = require("./utils/wrapAsync.js")
 const ExpressError = require("./utils/ExpressError.js");
+const { listingSchema } = require("./schema.js")
 
 
 app.engine("ejs", ejsMate);
@@ -46,13 +47,19 @@ app.get("/listings/new", (req, res)=>{
 app.get("/listings/:id", wrapAsync(async (req, res)=>{
     let { id } = req.params;
     const listing = await Listing.findById(id);
-    res.render("listings/show.ejs", { listing});
+    res.render("listings/show.ejs", { listing });
 }));
 
 //Create Route
 app.post("/listings", wrapAsync(async (req, res)=>{
-
-    const newListing = new Listing(req.body);
+    let result = listingSchema.validate(req.body)
+    console.log(result)
+    if(result.error){
+        throw new ExpressError(400, result.error)
+    }
+    console.log(req.body)
+    const newListing = new Listing(req.body.listing);
+    // console.log(req.body)
     await newListing.save();
     res.redirect("/listings");
   
@@ -67,9 +74,9 @@ app.get("/listings/:id/edit", wrapAsync(async (req, res)=>{
 
 //Update Route
 app.put("/listings/:id", wrapAsync(async (req, res)=>{
-    let{title, description, image, price, location, country} = req.body;
+    let{title, description, image, price, location, country} = req.body.listing;
     let { id } = req.params;
-    await Listing.findByIdAndUpdate(id, {title: title, description: description, image: image, price: price, location: location, country: country });
+    await Listing.findByIdAndUpdate(id, {...req.body.listing});
     res.redirect(`/listings/${id}`);
 }));
 
@@ -86,8 +93,8 @@ app.all("*", (req, res, next)=>{
 
 app.use((err, req, res, next)=>{
     let { statusCode=500,  message="something went wrong" } = err;
-    err = (message.split(",")[0].split("Path")[1])
-    res.status(statusCode).render("error.ejs", { message: err})
+    // err = (message.split(",")[0].split("Path")[1])
+    res.status(statusCode).render("error.ejs", { err})
     // res.status(statusCode).send(message)    
 })
 

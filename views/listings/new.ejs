@@ -7,39 +7,39 @@
                 <form action="/listings" method="post" novalidate class="needs-validation">
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Your Title</label>
-                        <input name="title" type="text" class="form-control" id="formGroupExampleInput"
+                        <input name="listing[title]" type="text" class="form-control" id="formGroupExampleInput"
                             placeholder="Enter Title" required>
                             <div class="valid-feedback">Title looks good</div>
                             <div class="invalid-feedback">Title should be valid</div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                        <textarea name="description" class="form-control" id="exampleFormControlTextarea1"
+                        <textarea name="listing[description]" class="form-control" id="exampleFormControlTextarea1"
                             rows="3" required></textarea>
                             <div class="invalid-feedback">Please enter short description</div>
                     </div>
 
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Image URL</label>
-                        <input name="image" class="form-control" type="text" id="formFile">
+                        <input name="listing[image]" class="form-control" type="text" id="formFile">
                     </div>
                     <div class="row">
                     <div class="mb-3 col-md-4">
                         <label for="formGroupExampleInput" class="form-label">Price</label>
-                        <input name="price" type="text" class="form-control" id="formGroupExampleInput"
+                        <input name="listing[price]" type="text" class="form-control" id="formGroupExampleInput"
                             placeholder="Enter Price" required>
                             <div class="invalid-feedback">Price should be valid</div>
                     </div>
                     <div class="mb-3 col-md-8">
                         <label for="formGroupExampleInput" class="form-label">Country</label>
-                        <input name="country" type="text" class="form-control" id="formGroupExampleInput"
+                        <input name="listing[country]" type="text" class="form-control" id="formGroupExampleInput"
                             placeholder="Enter Country" required>
                             <div class="invalid-feedback">Country name should be valid</div>
                     </div>
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Location</label>
-                        <input name="location" type="text" class="form-control" id="formGroupExampleInput"
+                        <input name="listing[location]" type="text" class="form-control" id="formGroupExampleInput"
                             placeholder="Enter Your Location" required>
                             <div class="invalid-feedback">Location should be valid</div>
                     </div>

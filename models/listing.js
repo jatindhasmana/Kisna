@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const listingScema = Schema({
     title: {
         type: String,
-        required: true,
     }, 
     description: String, 
     image: {
@@ -16,15 +15,12 @@ const listingScema = Schema({
     }, 
     price: {
         type: Number,
-        min: [0, "Please enter valid price"]
     }, 
     location: {
         type: String,
-        required: true
     }, 
     country: {
         type: String,
-        required: true
     }, 
 });
 
