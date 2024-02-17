@@ -49,7 +49,7 @@ body{
     flex-basis: 1;
 }
 
-.card{
+.listing-card{
     border: none !important;
     margin-bottom: 2rem;
 }
