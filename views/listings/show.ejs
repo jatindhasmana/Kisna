@@ -1,7 +1,9 @@
 <% layout("layouts/boilerplate.ejs") %>
 
     <script>
-        const mapToken = "<%= process.env.MAP_TOKEN %>"
+        const mapToken = "<%= process.env.MAPBOX_TOKEN %>"
+        const listing = <%- JSON.stringify(listing) %>
+
     </script>
     <h3 class="offset-2">
         <%= listing.title %>

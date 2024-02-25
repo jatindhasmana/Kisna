@@ -1,4 +1,8 @@
 const Listing = require("../models/listing");
+const mbxgeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
+const ExpressError = require("../utils/ExpressError");
+const mapToken = process.env.MAPBOX_TOKEN;
+const geocodingClient = mbxgeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
@@ -27,12 +31,22 @@ module.exports.showListing = async (req, res) => {
 };
 
 module.exports.createListing = async (req, res) => {
+
+  let response = await geocodingClient.forwardGeocode({
+    query: req.body.listing.location,
+    limit: 1
+  })
+    .send()
+  
   let url = req.file.path;
   let filename = req.file.filename
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
   newListing.image = { url, filename}
-  await newListing.save();
+  newListing.geocordinate = response.body.features[0].geometry;
+
+  let saveListing = await newListing.save();
+  console.log(saveListing);
   req.flash("success", "New Listing Created");
   res.redirect("/listings");
 };
@@ -69,3 +83,18 @@ module.exports.destroyListing = async (req, res) => {
   req.flash("success", "Listing Deleted");
   res.redirect("/listings");
 };
+
+module.exports.search = async (req, res) => {
+
+  const allListings = await Listing.find();
+
+  const { country } = req.query;
+
+  // Filter listings based on the country
+  const cityListings = country
+      ? allListings.filter(listing => listing.country.toLowerCase() === country.toLowerCase())
+      : allListings;
+
+  res.render('listings/index.ejs', { allListings:cityListings, country });
+};
+

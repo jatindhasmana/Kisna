@@ -22,6 +22,9 @@ router
 //New Route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
+// Search Route
+router.get("/search/:key", listingController.search);
+
 router
   .route("/:id")
   .get(wrapAsync(listingController.showListing))
