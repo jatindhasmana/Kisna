@@ -9,6 +9,8 @@ const sampleListings = [
     },
     price: 1500,
     location: "Malibu",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United States",
   },
   {
@@ -21,6 +23,8 @@ const sampleListings = [
     },
     price: 1200,
     location: "New York City",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United States",
   },
   {
@@ -33,6 +37,8 @@ const sampleListings = [
     },
     price: 1000,
     location: "Aspen",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United States",
   },
   {
@@ -45,6 +51,8 @@ const sampleListings = [
     },
     price: 2500,
     location: "Florence",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "Italy",
   },
   {
@@ -57,6 +65,8 @@ const sampleListings = [
     },
     price: 800,
     location: "Portland",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United States",
   },
   {
@@ -69,6 +79,8 @@ const sampleListings = [
     },
     price: 2000,
     location: "Cancun",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "Mexico",
   },
   {
@@ -81,6 +93,8 @@ const sampleListings = [
     },
     price: 900,
     location: "Lake Tahoe",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United States",
   },
   {
@@ -93,6 +107,8 @@ const sampleListings = [
     },
     price: 3500,
     location: "Los Angeles",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United States",
   },
   {
@@ -105,6 +121,8 @@ const sampleListings = [
     },
     price: 3000,
     location: "Verbier",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "Switzerland",
   },
   {
@@ -117,6 +135,8 @@ const sampleListings = [
     },
     price: 4000,
     location: "Serengeti National Park",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "Tanzania",
   },
   {
@@ -129,6 +149,8 @@ const sampleListings = [
     },
     price: 1800,
     location: "Amsterdam",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "Netherlands",
   },
   {
@@ -141,6 +163,8 @@ const sampleListings = [
     },
     price: 10000,
     location: "Fiji",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "Fiji",
   },
   {
@@ -153,6 +177,8 @@ const sampleListings = [
     },
     price: 1200,
     location: "Cotswolds",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United Kingdom",
   },
   {
@@ -165,6 +191,8 @@ const sampleListings = [
     },
     price: 2200,
     location: "Boston",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United States",
   },
   {
@@ -177,6 +205,8 @@ const sampleListings = [
     },
     price: 1800,
     location: "Bali",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "Indonesia",
   },
   {
@@ -189,6 +219,8 @@ const sampleListings = [
     },
     price: 1500,
     location: "Banff",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "Canada",
   },
   {
@@ -201,6 +233,8 @@ const sampleListings = [
     },
     price: 1600,
     location: "Miami",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United States",
   },
   {
@@ -213,6 +247,8 @@ const sampleListings = [
     },
     price: 3000,
     location: "Phuket",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "Thailand",
   },
   {
@@ -225,6 +261,8 @@ const sampleListings = [
     },
     price: 4000,
     location: "Scottish Highlands",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United Kingdom",
   },
   {
@@ -237,6 +275,8 @@ const sampleListings = [
     },
     price: 5000,
     location: "Dubai",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United Arab Emirates",
   },
   {
@@ -249,6 +289,8 @@ const sampleListings = [
     },
     price: 1100,
     location: "Montana",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United States",
   },
   {
@@ -261,6 +303,8 @@ const sampleListings = [
     },
     price: 2500,
     location: "Mykonos",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "Greece",
   },
   {
@@ -273,6 +317,8 @@ const sampleListings = [
     },
     price: 750,
     location: "Costa Rica",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "Costa Rica",
   },
   {
@@ -285,6 +331,8 @@ const sampleListings = [
     },
     price: 1600,
     location: "Charleston",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United States",
   },
   {
@@ -297,6 +345,8 @@ const sampleListings = [
     },
     price: 2000,
     location: "Tokyo",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "Japan",
   },
   {
@@ -309,6 +359,8 @@ const sampleListings = [
     },
     price: 1200,
     location: "New Hampshire",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United States",
   },
   {
@@ -321,6 +373,8 @@ const sampleListings = [
     },
     price: 6000,
     location: "Maldives",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "Maldives",
   },
   {
@@ -333,6 +387,8 @@ const sampleListings = [
     },
     price: 4000,
     location: "Aspen",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "United States",
   },
   {
@@ -345,6 +401,8 @@ const sampleListings = [
     },
     price: 1800,
     location: "Costa Rica",
+    
+    geocordinate: { type: 'Point', coordinates: [ 78.069022, 27.881541 ] },
     country: "Costa Rica",
   },
 ];

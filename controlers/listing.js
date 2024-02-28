@@ -1,11 +1,12 @@
 const Listing = require("../models/listing");
 const mbxgeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const ExpressError = require("../utils/ExpressError");
-const mapToken = process.env.MAPBOX_TOKEN;
+const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxgeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
+  console.log(req.country);
   res.render("listings/index.ejs", { allListings });
 };
 
@@ -16,6 +17,8 @@ module.exports.renderNewForm = (req, res) => {
 module.exports.showListing = async (req, res) => {
   let { id } = req.params;
   const listing = await Listing.findById(id)
+  // console.log(listing.owner)
+
     .populate({
       path: "reviews",
       populate: {
@@ -47,6 +50,7 @@ module.exports.createListing = async (req, res) => {
 
   let saveListing = await newListing.save();
   console.log(saveListing);
+  console.log(saveListing.geocordinate.coordinates);
   req.flash("success", "New Listing Created");
   res.redirect("/listings");
 };

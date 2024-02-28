@@ -1,9 +1,8 @@
 <% layout("layouts/boilerplate.ejs") %>
 
     <script>
-        const mapToken = "<%= process.env.MAPBOX_TOKEN %>"
-        const listing = <%- JSON.stringify(listing) %>
-
+        const mapToken = "<%=process.env.MAP_TOKEN%>";
+        const listing =<%- JSON.stringify(listing) %>;
     </script>
     <h3 class="offset-2">
         <%= listing.title %>
@@ -14,7 +13,7 @@
                 <img src="<%= listing.image.url %>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-text">
-                        Owned by <%= listing.owner.username %>
+                        Owned by <%= listing.owner %>
                     </p>
 
                     <p class="card-text">
@@ -35,7 +34,7 @@
             </div>
         </div>
     </div>
-    <% if (currUser && listing.owner._id.equals(currUser._id)) { %>
+    <% if(currUser && currUser._id.equals(listing.owner)) {%>
         <div class="btns">
             <form action="/listings/<%= listing._id %>?_method=DELETE" method="post">
                 <a class="btn btn-dark" href="/listings/<%= listing._id %>/edit">Edit</a>
